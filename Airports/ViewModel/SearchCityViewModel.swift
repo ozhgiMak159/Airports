@@ -8,12 +8,15 @@
 import RxCocoa
 import RxSwift
 import RxRelay
+import RxDataSources
 
 protocol SearchCityViewPresentable {
     typealias Input = (
         searchText: Driver<String>, ()
     )
-    typealias Output = ()
+    typealias Output = (
+        cities: Driver<[CityItemsSection]>, ()
+    )
     typealias ViewModelBuilder = (SearchCityViewPresentable.Input) -> SearchCityViewPresentable
     
     var input: SearchCityViewPresentable.Input { get }
@@ -21,7 +24,7 @@ protocol SearchCityViewPresentable {
 }
 
 
-class SearchCityViewModel: SearchCityViewPresentable {
+final class SearchCityViewModel: SearchCityViewPresentable {
     
     var input: SearchCityViewPresentable.Input
     var output: SearchCityViewPresentable.Output
@@ -33,14 +36,14 @@ class SearchCityViewModel: SearchCityViewPresentable {
     
     init(input: SearchCityViewPresentable.Input, airportService: AirportApi) {
         self.input = input
-        self.output = SearchCityViewModel.output(input: self.input, state: self.state, bag: self.bag)
+        self.output = SearchCityViewModel.output(input: self.input, state: self.state)
         self.airportService = airportService
         self.process()
     }
 }
 
 private extension SearchCityViewModel {
-    static func output(input: SearchCityViewPresentable.Input, state: State, bag: DisposeBag) -> SearchCityViewPresentable.Output {
+    static func output(input: SearchCityViewPresentable.Input, state: State) -> SearchCityViewPresentable.Output {
         
         let searchTextObservable = input.searchText
             .debounce(.milliseconds(300))
@@ -51,8 +54,8 @@ private extension SearchCityViewModel {
         let airportsObservable = state.airports
             .skip(1)
             .asObservable()
-        
-        Observable.combineLatest(searchTextObservable, airportsObservable)
+            
+        let sections = Observable.combineLatest(searchTextObservable, airportsObservable)
             .map { (searchKey, airports) in
                return airports.filter { (airport) in
                     !searchKey.isEmpty && airport.city.lowercased()
@@ -61,12 +64,15 @@ private extension SearchCityViewModel {
                 }
             }
             .map {
-                print($0.first?.city ?? "")
+                SearchCityViewModel.uniqueElementsFrom(array: $0.compactMap({CityViewModel(model: $0)}))
             }
-            .subscribe()
-            .disposed(by: bag)
+            .map({ [CityItemsSection(model: 0, items: $0)] })
+            .asDriver(onErrorJustReturn: [])
+  
         
-        return ()
+        return (
+            cities: sections, ()
+        )
     }
     
     func process() -> Void {
@@ -79,4 +85,21 @@ private extension SearchCityViewModel {
             .subscribe()
             .disposed(by: bag)
     }
+}
+
+private extension SearchCityViewModel {
+    
+    static func uniqueElementsFrom(array: [CityViewModel]) -> [CityViewModel] {
+        var set = Set<CityViewModel>()
+        let result = array.filter {
+            guard !set.contains($0) else { return false }
+            set.insert($0)
+            return true
+        }
+        return result
+    }
+    
+    
+    
+    
 }

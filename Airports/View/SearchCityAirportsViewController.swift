@@ -9,27 +9,46 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-class SearchCityAirportsViewController: UIViewController {
+class SearchCityAirportsViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var roundView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
+    private let disposeBag = DisposeBag()
     private var viewModel: SearchCityViewPresentable!
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<CityItemsSection>(configureCell: { _, tableView, indexPath, item in
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CityTableViewCell
+        cell.configure(viewModel: item)
+        
+        return cell
+    })
+    
+    
     var viewModelBuilder: SearchCityViewPresentable.ViewModelBuilder!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel = viewModelBuilder((
             searchText: searchTextField.rx.text.orEmpty.asDriver(), ()
         ))
                 
+        setupUI()
+        setupBinding()
+        
     }
 }
 
-extension SearchCityAirportsViewController: Storyboardable {
+private extension SearchCityAirportsViewController {
     
+    func setupUI() {
+        tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func setupBinding() {
+        self.viewModel.output.cities.drive(tableView.rx.items(dataSource: self.dataSource))
+            .disposed(by: disposeBag)
+    }
 }
 
-// Api: https://gist.githubusercontent.com/tdreyno/4278655/raw/7b0762c09b519f40397e4c3e100b097d861f5588/airports.json
