@@ -19,10 +19,6 @@ struct CityViewModel: CityViewPresentable {
     var city: String
     var location: String
     
-}
-
-extension CityViewModel {
-    
     init(model: AirportModel) {
         self.city = model.city
         self.location = "\(model.state ?? ""), \(model.country)"

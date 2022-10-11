@@ -43,9 +43,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <accessibility key="accessibilityConfiguration" identifier="Cell"/>
             <connections>
-                <outlet property="cityLabel" destination="r63-UH-zbh" id="8LN-wn-rTL"/>
-                <outlet property="locationLabel" destination="wzk-PH-pVQ" id="dKB-9w-w8I"/>
+                <outlet property="cityLabel" destination="r63-UH-zbh" id="IQe-nf-JwB"/>
+                <outlet property="locationLabel" destination="wzk-PH-pVQ" id="tyz-Ng-19V"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="127.90178571428571"/>
         </tableViewCell>

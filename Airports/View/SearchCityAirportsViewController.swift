@@ -17,16 +17,14 @@ class SearchCityAirportsViewController: UIViewController, Storyboardable {
     
     private let disposeBag = DisposeBag()
     private var viewModel: SearchCityViewPresentable!
+    var viewModelBuilder: SearchCityViewPresentable.ViewModelBuilder!
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<CityItemsSection>(configureCell: { _, tableView, indexPath, item in
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CityTableViewCell
         cell.configure(viewModel: item)
         
         return cell
     })
-    
-    
-    var viewModelBuilder: SearchCityViewPresentable.ViewModelBuilder!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +34,13 @@ class SearchCityAirportsViewController: UIViewController, Storyboardable {
                 
         setupUI()
         setupBinding()
-        
     }
 }
 
 private extension SearchCityAirportsViewController {
     
     func setupUI() {
-        tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
     }
     
     func setupBinding() {

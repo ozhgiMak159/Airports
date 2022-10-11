@@ -11,12 +11,14 @@ import RxRelay
 import RxDataSources
 
 protocol SearchCityViewPresentable {
+    
     typealias Input = (
         searchText: Driver<String>, ()
     )
     typealias Output = (
         cities: Driver<[CityItemsSection]>, ()
     )
+    
     typealias ViewModelBuilder = (SearchCityViewPresentable.Input) -> SearchCityViewPresentable
     
     var input: SearchCityViewPresentable.Input { get }
@@ -47,6 +49,7 @@ private extension SearchCityViewModel {
         
         let searchTextObservable = input.searchText
             .debounce(.milliseconds(300))
+            .distinctUntilChanged()
             .skip(1)
             .asObservable()
             .share(replay: 1, scope: .whileConnected)
@@ -55,33 +58,29 @@ private extension SearchCityViewModel {
             .skip(1)
             .asObservable()
             
-        let sections = Observable.combineLatest(searchTextObservable, airportsObservable)
+        let sections = Observable
+            .combineLatest(searchTextObservable, airportsObservable)
             .map { (searchKey, airports) in
                return airports.filter { (airport) in
-                    !searchKey.isEmpty && airport.city.lowercased()
+                    !searchKey.isEmpty &&
+                     airport.city
+                        .lowercased()
                         .replacingOccurrences(of: " ", with: "")
                         .hasPrefix(searchKey.lowercased())
                 }
             }
-            .map {
-                SearchCityViewModel.uniqueElementsFrom(array: $0.compactMap({CityViewModel(model: $0)}))
-            }
+            .map({ SearchCityViewModel.uniqueElementsFrom(array: $0.compactMap({CityViewModel(model: $0)}))})
             .map({ [CityItemsSection(model: 0, items: $0)] })
             .asDriver(onErrorJustReturn: [])
   
-        
-        return (
-            cities: sections, ()
-        )
+        return ( cities: sections, () )
     }
     
-    func process() -> Void {
+    func process() {
         self.airportService
             .fetchAirports()
             .map({ Set($0) })
-            .map { [state] in state.airports.accept($0)
-               
-            }
+            .map { [state] in state.airports.accept($0) }
             .subscribe()
             .disposed(by: bag)
     }
@@ -98,8 +97,5 @@ private extension SearchCityViewModel {
         }
         return result
     }
-    
-    
-    
-    
+
 }

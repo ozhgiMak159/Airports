@@ -22,14 +22,14 @@ extension AirportService: AirportApi {
             do {
                 try AirportHttpRouter.getAirports
                     .request(service: httpService)
-                    .responseJSON(completionHandler: { result in
-                        do {
-                            let airports = try AirportService.parseAirports(result: result)
+                    .responseDecodable(of: AirportsResponse.self) { result in
+                        switch result.result {
+                        case .success(let airports):
                             single(.success(airports))
-                        } catch {
-                            single(.failure(error))
+                        case .failure(_):
+                            single(.failure(CustomError.error(message: "Invalid Airports JSON")))
                         }
-                    })
+                    }
             } catch {
                 single(.failure(CustomError.error(message: "Airports fetch failed")))
             }
@@ -41,16 +41,16 @@ extension AirportService: AirportApi {
     
 }
 
-extension AirportService {
-    
-    static func parseAirports(result: AFDataResponse<Any>) throws -> AirportsResponse {
-        guard let data = result.data,
-              let airportsResponse = try? JSONDecoder().decode(AirportsResponse.self, from: data)
-              else {
-                  throw CustomError.error(message: "Invalid Airports JSON")
-              }
-        
-        return airportsResponse
-    }
-    
-}
+//extension AirportService {
+//
+//    static func parseAirports(result: AFDataResponse<Any>) throws -> AirportsResponse {
+//        guard let data = result.data,
+//              let airportsResponse = try? JSONDecoder().decode(AirportsResponse.self, from: data)
+//              else {
+//                  throw CustomError.error(message: "Invalid Airports JSON")
+//              }
+//
+//        return airportsResponse
+//    }
+//
+//}
