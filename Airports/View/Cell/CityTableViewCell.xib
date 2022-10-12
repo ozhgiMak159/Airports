@@ -17,6 +17,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4p-Qp-dqv">
+                        <rect key="frame" x="7" y="10" width="306" height="80"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="18"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Sx7-5u-yLU">
                         <rect key="frame" x="16" y="21" width="288" height="58"/>
                         <subviews>
@@ -35,22 +44,31 @@
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="V4p-Qp-dqv" secondAttribute="trailing" constant="7" id="3eA-Hg-DJr"/>
+                    <constraint firstItem="V4p-Qp-dqv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="7UC-ZH-dBM"/>
                     <constraint firstItem="Sx7-5u-yLU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="CRe-0C-ELD"/>
                     <constraint firstAttribute="trailing" secondItem="Sx7-5u-yLU" secondAttribute="trailing" constant="16" id="UWa-QO-qqq"/>
+                    <constraint firstItem="V4p-Qp-dqv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="aiC-5f-tDu"/>
+                    <constraint firstAttribute="bottom" secondItem="V4p-Qp-dqv" secondAttribute="bottom" constant="10" id="chr-ud-53Z"/>
                     <constraint firstItem="Sx7-5u-yLU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xm8-A8-4IK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <accessibility key="accessibilityConfiguration" identifier="Cell"/>
             <connections>
                 <outlet property="cityLabel" destination="r63-UH-zbh" id="IQe-nf-JwB"/>
                 <outlet property="locationLabel" destination="wzk-PH-pVQ" id="tyz-Ng-19V"/>
             </connections>
-            <point key="canvasLocation" x="-91" y="74"/>
+            <point key="canvasLocation" x="-91.304347826086968" y="72.991071428571431"/>
         </tableViewCell>
     </objects>
     <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
