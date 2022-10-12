@@ -40,7 +40,7 @@ class SearchCityAirportsViewController: UIViewController, Storyboardable {
 private extension SearchCityAirportsViewController {
     
     func setupUI() {
-        tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
     }
     
     func setupBinding() {

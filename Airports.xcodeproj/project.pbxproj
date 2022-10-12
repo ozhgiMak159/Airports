@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B570027028F6EEFD0022FFA2 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5DBA0B028F536B40040031F /* CityTableViewCell.xib */; };
 		B5DBA0AB28F52BA20040031F /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBA0AA28F52BA20040031F /* CityViewModel.swift */; };
 		B5DBA0B128F536B40040031F /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBA0AF28F536B40040031F /* CityTableViewCell.swift */; };
-		B5DBA0B228F536B40040031F /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5DBA0B028F536B40040031F /* CityTableViewCell.xib */; };
 		B5E7BC3928F2DD8300896D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7BC3828F2DD8300896D2A /* AppDelegate.swift */; };
 		B5E7BC3B28F2DD8300896D2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7BC3A28F2DD8300896D2A /* SceneDelegate.swift */; };
 		B5E7BC3D28F2DD8300896D2A /* SearchCityAirportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7BC3C28F2DD8300896D2A /* SearchCityAirportsViewController.swift */; };
@@ -280,7 +280,7 @@
 			files = (
 				B5E7BC4528F2DD8500896D2A /* LaunchScreen.storyboard in Resources */,
 				B5E7BC4228F2DD8500896D2A /* Assets.xcassets in Resources */,
-				B5DBA0B228F536B40040031F /* CityTableViewCell.xib in Resources */,
+				B570027028F6EEFD0022FFA2 /* CityTableViewCell.xib in Resources */,
 				B5E7BC4028F2DD8300896D2A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

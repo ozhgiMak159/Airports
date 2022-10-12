@@ -12,6 +12,12 @@ class CityTableViewCell: UITableViewCell {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
     func configure(viewModel: CityViewPresentable)  {
        
         self.cityLabel.text = viewModel.city
