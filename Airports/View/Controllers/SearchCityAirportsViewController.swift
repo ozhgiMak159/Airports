@@ -29,23 +29,43 @@ class SearchCityAirportsViewController: UIViewController, Storyboardable {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = viewModelBuilder((
-            searchText: searchTextField.rx.text.orEmpty.asDriver(), ()
+            searchText: searchTextField.rx.text.orEmpty.asDriver(),
+            citySelect: tableView.rx.modelSelected(CityViewModel.self).asDriver()
         ))
                 
-        setupUI()
+        setupNavBar()
+       // setupTF()
         setupBinding()
     }
 }
 
 private extension SearchCityAirportsViewController {
     
-    func setupUI() {
+    func setupNavBar() {
+        title = "Airports"
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+       
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Avenir", size: 30)!]
+        
         tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+    }
+    
+    func setupTF() {
+        searchTextField.leftView = UIImageView(image: UIImage(named: "magnifyingglass"))
+        searchTextField.leftView?.frame = CGRect(x: 0, y: 5, width: 20, height: 20)
+        searchTextField.leftViewMode = .always
+       
     }
     
     func setupBinding() {
         self.viewModel.output.cities.drive(tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: disposeBag)
     }
+    
+    
 }
 

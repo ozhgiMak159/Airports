@@ -19,20 +19,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ufb-66-5CU">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="150"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Airport Name...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KzZ-cL-NEK">
-                                        <rect key="frame" x="70" y="75" width="250" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Airport Name...." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KzZ-cL-NEK">
+                                        <rect key="frame" x="45" y="100" width="300" height="34"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="WfV-RH-ICe"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="WfV-RH-ICe"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstItem="KzZ-cL-NEK" firstAttribute="centerX" secondItem="ufb-66-5CU" secondAttribute="centerX" id="E7M-dx-wH0"/>
                                     <constraint firstAttribute="height" constant="150" id="Jic-mb-Jaw"/>
-                                    <constraint firstItem="KzZ-cL-NEK" firstAttribute="top" secondItem="ufb-66-5CU" secondAttribute="top" constant="75" id="nrh-no-G6K"/>
+                                    <constraint firstItem="KzZ-cL-NEK" firstAttribute="top" secondItem="ufb-66-5CU" secondAttribute="top" constant="100" id="nrh-no-G6K"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a14-9o-7ws">
@@ -61,6 +62,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="121.53846153846153" y="93.838862559241704"/>
+        </scene>
+        <!--Airports View Controller-->
+        <scene sceneID="S1u-du-dWY">
+            <objects>
+                <viewController storyboardIdentifier="AirportsViewController" id="2Us-Y4-dvT" customClass="AirportsViewController" customModule="Airports" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gbs-Nw-Q0w">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" estimatedRowHeight="130" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uJR-Hg-VQE">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="08r-HP-g9t"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uJR-Hg-VQE" firstAttribute="leading" secondItem="08r-HP-g9t" secondAttribute="leading" id="6FJ-ks-jya"/>
+                            <constraint firstAttribute="bottom" secondItem="uJR-Hg-VQE" secondAttribute="bottom" id="apj-br-kTg"/>
+                            <constraint firstItem="uJR-Hg-VQE" firstAttribute="top" secondItem="Gbs-Nw-Q0w" secondAttribute="top" id="h2k-t9-oFR"/>
+                            <constraint firstItem="uJR-Hg-VQE" firstAttribute="trailing" secondItem="08r-HP-g9t" secondAttribute="trailing" id="p89-PY-1Xs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="uJR-Hg-VQE" id="Pcb-qX-vpx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ruB-jK-b2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976.92307692307691" y="93.838862559241704"/>
         </scene>
     </scenes>
     <resources>
