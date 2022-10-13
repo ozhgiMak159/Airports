@@ -24,12 +24,12 @@
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="WfV-RH-ICe"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="tintColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstItem="KzZ-cL-NEK" firstAttribute="centerX" secondItem="ufb-66-5CU" secondAttribute="centerX" id="E7M-dx-wH0"/>
                                     <constraint firstAttribute="height" constant="150" id="Jic-mb-Jaw"/>

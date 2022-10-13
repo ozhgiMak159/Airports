@@ -28,8 +28,9 @@ class AirportsViewController: UIViewController, Storyboardable {
         super.viewDidLoad()
 
         self.viewModel = viewModelBuilder( () )
-        self.setupUI()
-        self.setupBinding()
+        setupUI()
+        setupBinding()
+       // setupNavBar()
     }
     
 }
@@ -50,6 +51,22 @@ private extension AirportsViewController {
             .drive(self.rx.title)
             .disposed(by: bag)
         
+    }
+    
+    
+    func setupNavBar() {
+     
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navBarAppearance.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
     
 }
