@@ -14,6 +14,7 @@
 		B570027A28F7F14B0022FFA2 /* AirportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570027828F7F14B0022FFA2 /* AirportTableViewCell.swift */; };
 		B570027B28F7F14B0022FFA2 /* AirportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B570027928F7F14B0022FFA2 /* AirportTableViewCell.xib */; };
 		B570027D28F80A510022FFA2 /* AirportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570027C28F80A510022FFA2 /* AirportViewModel.swift */; };
+		B570028028F8355F0022FFA2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570027F28F8355F0022FFA2 /* LocationService.swift */; };
 		B5DBA0AB28F52BA20040031F /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBA0AA28F52BA20040031F /* CityViewModel.swift */; };
 		B5DBA0B128F536B40040031F /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBA0AF28F536B40040031F /* CityTableViewCell.swift */; };
 		B5E7BC3928F2DD8300896D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7BC3828F2DD8300896D2A /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		B570027828F7F14B0022FFA2 /* AirportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportTableViewCell.swift; sourceTree = "<group>"; };
 		B570027928F7F14B0022FFA2 /* AirportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirportTableViewCell.xib; sourceTree = "<group>"; };
 		B570027C28F80A510022FFA2 /* AirportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportViewModel.swift; sourceTree = "<group>"; };
+		B570027F28F8355F0022FFA2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		B5DBA0AA28F52BA20040031F /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		B5DBA0AF28F536B40040031F /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		B5DBA0B028F536B40040031F /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 				B570027228F7D0C90022FFA2 /* AirportsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B570027E28F835430022FFA2 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				B570027F28F8355F0022FFA2 /* LocationService.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		B5DBA0AC28F536540040031F /* Cell */ = {
@@ -216,6 +226,7 @@
 		B5EB091928F3E98B0010C33E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B570027E28F835430022FFA2 /* Location */,
 				B5EB091A28F3E9980010C33E /* HTTP */,
 				B5EB092328F3F2DB0010C33E /* AirportService .swift */,
 				B5EB092528F3F32F0010C33E /* AirportApi.swift */,
@@ -336,6 +347,7 @@
 				B570027D28F80A510022FFA2 /* AirportViewModel.swift in Sources */,
 				B5E7BC6628F2F0D800896D2A /* BaseCoordinator.swift in Sources */,
 				B5E7BC6B28F2F90800896D2A /* AppCoordinator.swift in Sources */,
+				B570028028F8355F0022FFA2 /* LocationService.swift in Sources */,
 				B570027328F7D0C90022FFA2 /* AirportsViewController.swift in Sources */,
 				B570027528F7D1F70022FFA2 /* AirportsViewModel.swift in Sources */,
 				B5DBA0B128F536B40040031F /* CityTableViewCell.swift in Sources */,
@@ -494,6 +506,8 @@
 				DEVELOPMENT_TEAM = GQU4PC2XPJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Airports/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -523,6 +537,8 @@
 				DEVELOPMENT_TEAM = GQU4PC2XPJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Airports/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

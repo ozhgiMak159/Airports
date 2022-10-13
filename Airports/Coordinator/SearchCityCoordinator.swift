@@ -43,7 +43,7 @@ class SearchCityCoordinator: BaseCoordinator {
 private extension SearchCityCoordinator {
     
     func showAirports(models: Set<AirportModel>) {
-        let airportsCoordinator = AirportsCoordinator(navigationController: self.navigationController)
+        let airportsCoordinator = AirportsCoordinator(navigationController: self.navigationController, models: models)
         self.add(coordinator: airportsCoordinator)
         airportsCoordinator.start()
     }

@@ -41,3 +41,10 @@ extension AirportViewModel {
         self.distance = 0
     }
 }
+
+private extension AirportsViewModel {
+    
+    
+    
+    
+}
