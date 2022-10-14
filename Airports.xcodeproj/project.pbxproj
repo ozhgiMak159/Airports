@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50F82F828F9370200FB72A7 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F82F728F9370200FB72A7 /* Drawable.swift */; };
+		B50F82FA28F9386500FB72A7 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F82F928F9386500FB72A7 /* Routing.swift */; };
+		B50F82FC28F9394200FB72A7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F82FB28F9394200FB72A7 /* Router.swift */; };
 		B570027028F6EEFD0022FFA2 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5DBA0B028F536B40040031F /* CityTableViewCell.xib */; };
 		B570027328F7D0C90022FFA2 /* AirportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570027228F7D0C90022FFA2 /* AirportsViewController.swift */; };
 		B570027528F7D1F70022FFA2 /* AirportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570027428F7D1F70022FFA2 /* AirportsViewModel.swift */; };
@@ -45,6 +48,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50F82F728F9370200FB72A7 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
+		B50F82F928F9386500FB72A7 /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		B50F82FB28F9394200FB72A7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B570027228F7D0C90022FFA2 /* AirportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsViewController.swift; sourceTree = "<group>"; };
 		B570027428F7D1F70022FFA2 /* AirportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsViewModel.swift; sourceTree = "<group>"; };
 		B570027628F7DF160022FFA2 /* AirportsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsCoordinator.swift; sourceTree = "<group>"; };
@@ -95,6 +101,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B50F82F628F936E500FB72A7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B50F82F728F9370200FB72A7 /* Drawable.swift */,
+				B50F82F928F9386500FB72A7 /* Routing.swift */,
+				B50F82FB28F9394200FB72A7 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		B570027128F7D0A50022FFA2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +158,7 @@
 		B5E7BC3728F2DD8300896D2A /* Airports */ = {
 			isa = PBXGroup;
 			children = (
+				B50F82F628F936E500FB72A7 /* Router */,
 				B5EB091928F3E98B0010C33E /* Service */,
 				B5E7BC6728F2F24400896D2A /* Extensions */,
 				B5E7BC6028F2EE5200896D2A /* Coordinator */,
@@ -339,6 +356,7 @@
 				B5EB091C28F3E9F50010C33E /* HttpRouter.swift in Sources */,
 				B5E7BC6428F2EEE400896D2A /* Coordinator.swift in Sources */,
 				B5DBA0AB28F52BA20040031F /* CityViewModel.swift in Sources */,
+				B50F82FA28F9386500FB72A7 /* Routing.swift in Sources */,
 				B5EB092028F3ECD90010C33E /* AirportHttpService.swift in Sources */,
 				B5E7BC6228F2EE9900896D2A /* SearchCityCoordinator.swift in Sources */,
 				B5EB092428F3F2DB0010C33E /* AirportService .swift in Sources */,
@@ -353,8 +371,10 @@
 				B5DBA0B128F536B40040031F /* CityTableViewCell.swift in Sources */,
 				B5E7BC5F28F2E67B00896D2A /* SearchCityViewModel.swift in Sources */,
 				B5E7BC3B28F2DD8300896D2A /* SceneDelegate.swift in Sources */,
+				B50F82FC28F9394200FB72A7 /* Router.swift in Sources */,
 				B5EB092628F3F32F0010C33E /* AirportApi.swift in Sources */,
 				B5EB092828F3F4210010C33E /* AirportModel.swift in Sources */,
+				B50F82F828F9370200FB72A7 /* Drawable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

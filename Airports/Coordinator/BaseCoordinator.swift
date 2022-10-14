@@ -7,6 +7,7 @@
 
 class BaseCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
+    var isCompleted: (() -> Void)?
     
     func start() {
         fatalError("Children should implement 'start'.")

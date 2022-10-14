@@ -10,12 +10,12 @@ import UIKit
 
 class AirportsCoordinator: BaseCoordinator {
     
-    private let navigationController: UINavigationController
+    private let router: Routing
     private let models: Set<AirportModel>
     
-    init(navigationController: UINavigationController, models: Set<AirportModel>) {
+    init(router: Routing, models: Set<AirportModel>) {
         self.models = models
-        self.navigationController = navigationController
+        self.router = router
     }
     
     override func start() {
@@ -33,7 +33,7 @@ class AirportsCoordinator: BaseCoordinator {
             
         }
 
-        self.navigationController.pushViewController(view, animated: true)
+        self.router.push(view, isAnimated: true, onNavigationBack: isCompleted)
         
     }
     

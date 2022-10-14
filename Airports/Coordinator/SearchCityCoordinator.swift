@@ -11,11 +11,11 @@ import RxCocoa
 
 class SearchCityCoordinator: BaseCoordinator {
     
-    private let navigationController: UINavigationController
+    private let router: Routing
     private let bag = DisposeBag()
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(router: Routing) {
+        self.router = router
     }
     
     override func start() {
@@ -35,7 +35,7 @@ class SearchCityCoordinator: BaseCoordinator {
             return viewModel
         }
         
-        navigationController.pushViewController(view, animated: true)
+        router.push(view, isAnimated: true, onNavigationBack: isCompleted)
 
     }
 }
@@ -43,8 +43,12 @@ class SearchCityCoordinator: BaseCoordinator {
 private extension SearchCityCoordinator {
     
     func showAirports(models: Set<AirportModel>) {
-        let airportsCoordinator = AirportsCoordinator(navigationController: self.navigationController, models: models)
+        let airportsCoordinator = AirportsCoordinator(router: self.router, models: models)
         self.add(coordinator: airportsCoordinator)
+        airportsCoordinator.isCompleted = { [ weak self, weak airportsCoordinator ] in
+            guard let coordinator = airportsCoordinator else { return }
+            self?.remove(coordinator: coordinator)
+        }
         airportsCoordinator.start()
     }
     

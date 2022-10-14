@@ -19,10 +19,15 @@ class AppCoordinator: BaseCoordinator {
         self.window = window
     }
     
-    
     override func start() {
-        let searchCityCoordinator = SearchCityCoordinator(navigationController: navigationController)
+        let router = Router(navigationController: self.navigationController)
+        let searchCityCoordinator = SearchCityCoordinator(router: router)
         self.add(coordinator: searchCityCoordinator)
+        searchCityCoordinator.isCompleted = { [weak self, weak searchCityCoordinator] in
+            guard let coordinator = searchCityCoordinator else { return }
+            self?.remove(coordinator: coordinator)
+        }
+        
         searchCityCoordinator.start()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
