@@ -43,14 +43,13 @@ class AirportsCoordinator: BaseCoordinator {
         }
         
         self.router.push(view, isAnimated: true, onNavigationBack: isCompleted)
-        
     }
 }
 
 private extension AirportsCoordinator {
     
     func showAirportDetails(model: AirportModel) {
-        let detailsCoordinator = AirportDetailsCoordinator(router: self.router)
+        let detailsCoordinator = AirportDetailsCoordinator(model: model, router: self.router)
         self.add(coordinator: detailsCoordinator)
         detailsCoordinator.isCompleted = { [weak self, weak detailsCoordinator] in
             guard let detailsCoordinator = detailsCoordinator else { return }
@@ -58,6 +57,5 @@ private extension AirportsCoordinator {
         }
         detailsCoordinator.start()
     }
-    
-    
+
 }
