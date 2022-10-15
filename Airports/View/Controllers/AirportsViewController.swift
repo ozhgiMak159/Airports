@@ -27,7 +27,11 @@ class AirportsViewController: UIViewController, Storyboardable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.viewModel = viewModelBuilder( () )
+        self.viewModel = viewModelBuilder((
+            selectAirport: self.tableView.rx
+                .modelSelected(AirportViewPresentable.self)
+                .asDriver(onErrorDriveWith: .empty()), ()
+        ))
         setupUI()
         setupBinding()
        // setupNavBar()

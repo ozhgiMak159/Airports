@@ -31,6 +31,7 @@ class AppCoordinator: BaseCoordinator {
         searchCityCoordinator.start()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+       
     }
     
     

@@ -12,4 +12,6 @@ typealias NavigationBackClosure = (() -> Void)
 protocol Routing {
     func push(_ drawable: Drawable, isAnimated: Bool, onNavigationBack: NavigationBackClosure?)
     func pop(_ isAnimated: Bool)
+    func popToRoot(_ isAnimated: Bool)
+    func present(_ drawable: Drawable, isAnimated: Bool, onDismiss: NavigationBackClosure?)
 }

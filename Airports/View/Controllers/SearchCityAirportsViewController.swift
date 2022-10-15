@@ -26,6 +26,11 @@ class SearchCityAirportsViewController: UIViewController, Storyboardable {
         return cell
     })
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        deleteHorizonLineNavBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = viewModelBuilder((
@@ -34,7 +39,6 @@ class SearchCityAirportsViewController: UIViewController, Storyboardable {
         ))
                 
         setupNavBar()
-       // setupTF()
         setupBinding()
     }
 }
@@ -51,17 +55,13 @@ private extension SearchCityAirportsViewController {
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-       
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Avenir", size: 30)!]
-        
+                
         tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
     }
     
-    func setupTF() {
-        searchTextField.leftView = UIImageView(image: UIImage(named: "magnifyingglass"))
-        searchTextField.leftView?.frame = CGRect(x: 0, y: 5, width: 20, height: 20)
-        searchTextField.leftViewMode = .always
-       
+    func deleteHorizonLineNavBar() {
+        
+      
     }
     
     func setupBinding() {
